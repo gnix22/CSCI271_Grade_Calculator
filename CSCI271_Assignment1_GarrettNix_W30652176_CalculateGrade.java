@@ -29,33 +29,16 @@
 ********************************************************************/ 
 // grade calculator class.
 class CalculateGrade {
-    // set up grade variables, not sure if 0s need to be specified like in c++, so leaving as placeholder for now.
-    private double _avgAssignment = 0;
-    private double _avgInClassTest = 0;
-    private double _finalExamScore = 0;
-    private double _midtermExamScore = 0;
-    private double _combinedScore = (0.4*_finalExamScore + 0.2*_midtermExamScore + 0.1*_avgInClassTest)/70;
     // standard avg calculation using arrays
-    public double calculateAvg(double[] scoreArray){
+    private double calculateAvg(double[] scoreArray){
         double sum = 0;
         for(double score : scoreArray){
             sum += score; // summation over set
         }
         return sum / scoreArray.length;
     }
-
-    // constructor
-    private void initializeScores(double avgAssignmentScore, double avgInClassTestScore, double midtermExamScore, double finalExamScore) {
-        /**
-         * 
-         */
-        _avgAssignment = avgAssignmentScore;
-        _avgInClassTest = avgInClassTestScore;
-        _midtermExamScore = midtermExamScore;
-        _finalExamScore = finalExamScore;
-    }
-    // use combined score and avg assignments grade if needed to create calculated grade.
-    public double calculateGrade() throws InvalidScoring{
+    // changing function to take in arrays as arguments then calling avg function as nested.
+    public double calculateGrade(double[] assignmentsArray, double[] testsArray, double midtermExamScore, double finalExamScore) throws InvalidScoring{
         /*****************************<CalculateGrade>****************************
         * Description: Calculates the final grade of...... finish this later since I'm wasting time formatting.
         * Parameters: errorString (string)
@@ -68,17 +51,20 @@ class CalculateGrade {
         *
         * Called by: CalculateGrade()
         * Calls: N/A
-        ************************************************************************/ 
+        ************************************************************************/
+        double assignmentsAvg = calculateAvg(assignmentsArray);
+        double testsAvg = calculateAvg(testsArray);
+        double combinedScore = (0.4*finalExamScore + 0.2*midtermExamScore + 0.1*testsAvg)/70;
         double finalGrade = 0;
-        double weights = 0.3 * (_combinedScore - 60) / 20;
-        if(_combinedScore < 60){
-            finalGrade = _combinedScore;
-        } else if (_combinedScore >= 60 || _combinedScore < 80) {
-            finalGrade = (1 - weights) * _combinedScore + weights * _avgAssignment;
-        } else if (_combinedScore >= 80){
-            finalGrade = 0.4*_finalExamScore + 0.2*_midtermExamScore + 0.1*_avgInClassTest + 0.3*_avgAssignment;
+        double weights = 0.3 * (combinedScore - 60) / 20;
+        if(combinedScore < 60){
+            finalGrade = combinedScore;
+        } else if (combinedScore >= 60 || combinedScore < 80) {
+            finalGrade = (1 - weights) * combinedScore + weights * assignmentsAvg;
+        } else if (combinedScore >= 80){
+            finalGrade = 0.4*finalExamScore + 0.2*midtermExamScore + 0.1*testsAvg + 0.3*assignmentsAvg;
         } else {
-            throw new InvalidScoring("invalid combined score... Please ensure grades are correct.");
+            throw new InvalidScoring("invalid combined score... Please ensure grades are correct."); 
         }
         return finalGrade;
     }
