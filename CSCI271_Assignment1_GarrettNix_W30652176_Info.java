@@ -1,5 +1,5 @@
-
-public class StudentInformation{
+import java.util.Scanner;
+class StudentInformation{
     // set each line with hard rules as structure of assignment allows for it
     private static void setStudentInformation(String lineIn){
         String[] values = line.split(","); // each split value placed into array via comma delimiting
@@ -27,8 +27,11 @@ public class StudentInformation{
             double midtermScore = Double.parseDouble(values[15].trim()); // midterm is index 15
             double finalExamScore = Double.parseDouble(values[16].trim()); // final is index 16 in csv
         } catch(NumberFormatException e) { // catch throw from parseDouble 
-            
+            system.out.println("Error: " + e.getMessage());
         }
-        
+    }
+    // set information of entire csv
+    public static void setInformation(Scanner scanner){
+        String fileName = scanner.nextLine();
     }
 }

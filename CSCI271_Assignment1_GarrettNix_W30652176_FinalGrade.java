@@ -29,20 +29,15 @@
 ********************************************************************/ 
 import java.util.Scanner;
 
-public class FinalGrade { // class name if public* must match file name to properly compile.... 
+class FinalGrade { // class name if public* must match file name to properly compile.... 
                           // (* I'm not sure just yet public is requirement for this)
   public static void main(String[] args) {
     String filePath = args[0]; // cli arg for file path of csv
     Scanner scan = new Scanner(System.in);
-    PathError err = new PathError();
+    StudentInformation studentInfo = new StudentInformation();
     // try and run path given to calculate csv grades 
     try{
-      // just realized this wont work here, need to put with info.java most likely....
-      if(!filePath){
-        throw err.pathError("path does not exist, or was not given, please provide path to csv.") 
-      }
-
-
+      studentInfo.setInformation(scan);
     }
     catch(pathError e){
       System.out.println("An error was caught: " + e.getMessage());
