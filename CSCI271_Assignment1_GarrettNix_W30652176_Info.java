@@ -12,7 +12,6 @@ class StudentInformation{
             System.err.println("Error w/ student" + studentName + ": skipping line due to insufficient information");
             return; // exit method for this line since error with information.
         }
-        
         try{
             double[] assignmentsArray = new double[7];
             double[] testsArray = new double[7];
@@ -29,7 +28,7 @@ class StudentInformation{
             double midtermScore = Double.parseDouble(values[15].trim()); // midterm is index 15
             double finalExamScore = Double.parseDouble(values[16].trim()); // final is index 16 in csv
 
-            double finalGrade = new CalculateGrade().calculateGrade(assignmentsArray, testsArray, midtermScore, finalExamScore);
+            double finalGrade = new CalculateGrade().calculateGrade(assignmentsArray, testsArray, midtermScore, finalExamScore); // cool compact trick I discovered.
         } catch(NumberFormatException e) { // catch throw from parseDouble 
             System.out.println("Error: " + e.getMessage());
         } catch(InvalidScoring e){

@@ -29,17 +29,16 @@
 ********************************************************************/ 
 import java.util.Scanner;
 
-class FinalGrade { // class name if public* must match file name to properly compile.... 
+public class CSCI271_Assignment1_GarrettNix_W30652176_FinalGrade { // class name if public* must match file name to properly compile.... 
                           // (* I'm not sure just yet public is requirement for this)
   public static void main(String[] args) {
-    String filePath = args[0]; // cli arg for file path of csv
-    Scanner scan = new Scanner(System.in);
-    StudentInformation studentInfo = new StudentInformation();
     // try and run path given to calculate csv grades 
-    try{
-      studentInfo.setInformation(scan);
+    try{    
+      String filePath = args[0]; // cli arg for file path of csv
+      StudentInformation studentInfo = new StudentInformation();
+      studentInfo.setInformation(filePath);
     }
-    catch(pathError e){
+    catch(ArrayIndexOutOfBoundsException e){
       System.out.println("An error was caught: " + e.getMessage());
     }
   }
