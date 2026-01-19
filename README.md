@@ -7,7 +7,7 @@ $$E=\frac{0.4F+0.2M+0.1T}{70},$$
 
 where $F$ is the final exam score, $M$ is the final midterm grade, and $T$ is the average in-class test score.
 
-This is then put into a piecewise function $G$,
+This is then placed into a piecewise function $G$,
 
 $$G=\begin{cases}
   E \quad E<60\\
