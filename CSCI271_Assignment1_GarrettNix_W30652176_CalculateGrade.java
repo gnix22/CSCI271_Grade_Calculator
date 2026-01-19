@@ -27,35 +27,34 @@
 * Garrett Nix
 * W30652176
 ********************************************************************/ 
-
-// custom exception for invalid combined scoring.
-class InvalidCombinedScore extends Exception{
-
-    public invalidScore(String errorString){
-        /*****************************<InvalidScore>****************************
-        * Description: Custom exception to be thrown when final score is incorrect.
-        * Parameters: errorString (string)
-        *
-        * Pre: error must be thrown for this function to be called.
-        *
-        * Post: a custom exception is thrown as an extension of the Exception class.
-        *
-        * Returns: N/A
-        *
-        * Called by: CalculateGrade()
-        * Calls: N/A
-        ************************************************************************/ 
-        super(errorString);
-    }
-}
 // grade calculator class.
 public class CalculateGrade {
     // set up grade variables, not sure if 0s need to be specified like in c++, so leaving as placeholder for now.
-    private double avgAssignment_ = 0;
-    private double avgInClassTest_ = 0;
-    private double finalExamScore_ = 0;
-    private double midtermExamScore_ = 0;
-    private double combinedScore_ = (0.4*finalExamScore + 0.2*midtermExamScore + 0.1*avgInClassTest)/70;
+    private double _avgAssignment = 0;
+    private double _avgInClassTest = 0;
+    private double _finalExamScore = 0;
+    private double _midtermExamScore = 0;
+    private double _combinedScore = (0.4*finalExamScore + 0.2*midtermExamScore + 0.1*avgInClassTest)/70;
+    InvalidScoring err = new InvalidScoring(); // call InvalidScoring custom error class
+    // standard avg calculation using arrays
+    public double calculateAvg(double[] scoreArray){
+        double sum = 0;
+        for(score : scoreArray){
+            sum += score; // summation over set
+        }
+        return sum / scorelist.length;
+    }
+
+    // constructor
+    private void initializeScores(double avgAssignmentScore, double avgInClassTestScore, double midtermExamScore, double finalExamScore) {
+        /**
+         * 
+         */
+        _avgAssignment = avgAssignmentScore;
+        _avgInClassTest = avgInClassTestScore;
+        _midtermExamScore = midtermExamScore;
+        _finalExamScore = finalExamScore;
+    }
     // use combined score and avg assignments grade if needed to create calculated grade.
     public double calculateGrade(){
         /*****************************<CalculateGrade>****************************
@@ -80,7 +79,7 @@ public class CalculateGrade {
         } else if (combinedScore >= 80){
             finalGrade = 0.4*finalExamScore + 0.2*midtermExamScore + 0.1*avgInClassTest + 0.3*avgAssignment;
         } else {
-            throw new invalidScore("Error: invalid combined score... Please ensure grades are correct.");
+            throw new err.invalidScoring("invalid combined score... Please ensure grades are correct.");
         }
         return finalGrade;
     }
