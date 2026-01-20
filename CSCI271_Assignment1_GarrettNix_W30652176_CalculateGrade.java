@@ -38,7 +38,7 @@ class CalculateGrade {
         return sum / scoreArray.length;
     }
     // changing function to take in arrays as arguments then calling avg function as nested.
-    public double calculateGrade(double[] assignmentsArray, double[] testsArray, double midtermExamScore, double finalExamScore) throws InvalidScoring{
+    public double calculateGrade(double[] assignmentsArray, double[] testsArray, double midtermExamScore, double finalExamScore) throws InvalidScoringException{
         /*****************************<CalculateGrade>****************************
         * Description: Calculates the final grade of...... finish this later since I'm wasting time formatting.
         * Parameters: errorString (string)
@@ -64,8 +64,8 @@ class CalculateGrade {
         } else if (combinedScore >= 80){
             finalGrade = 0.4*finalExamScore + 0.2*midtermExamScore + 0.1*testsAvg + 0.3*assignmentsAvg;
         } else {
-            throw new InvalidScoring("invalid combined score... Please ensure grades are correct."); 
+            throw new InvalidScoringException("invalid combined score... please ensure grade information is correct."); 
         }
-        return finalGrade;
+        return finalGrade * 100;
     }
 }

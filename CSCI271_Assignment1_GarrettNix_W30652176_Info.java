@@ -32,13 +32,13 @@ class StudentInformation{
             printInformation(studentName, finalGrade);
         } catch(NumberFormatException e) { // catch throw from parseDouble 
             System.out.println("Error: " + e.getMessage());
-        } catch(InvalidScoring e){
+        } catch(InvalidScoringException e){
             System.out.println("Error: " + e.getMessage());
         }
     }
     private static void printInformation(String studentName, double finalGrade){
         System.out.println(studentName + ":");
-        System.out.println("Final Grade: " + finalGrade);
+        System.out.printf("Final Grade: %.2f\n",finalGrade);
     }
     // set information of entire csv using cli argument...
     public static void setInformation(String fileIn){
@@ -50,7 +50,7 @@ class StudentInformation{
             while(fileScanner.hasNextLine()){
                 String lineInfo = fileScanner.nextLine().trim();
                 if(lineInfo.isEmpty()){
-                    System.out.println("parsed all lines...");
+                    System.out.println("empty line");
                     continue;
                 }
                 setStudentInformation(lineInfo);

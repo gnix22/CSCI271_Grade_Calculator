@@ -39,7 +39,7 @@ public class CSCI271_Assignment1_GarrettNix_W30652176_Main { // class name if pu
       studentInfo.setInformation(filePath);
     }
     catch(ArrayIndexOutOfBoundsException e){
-      System.out.println("An error was caught: " + e.getMessage());
+      System.out.println("An error was caught: " + e.getMessage() + ": please provide the path to your csv as an argument");
     }
   }
 }

@@ -1,5 +1,5 @@
-class InvalidScoring extends Exception{
-    public InvalidScoring(String errorString){
+class InvalidScoringException extends Exception{
+    public InvalidScoringException(String errorString){
         /*****************************<pathError>****************************
         * Description: Custom exception to be thrown when scoring is invalid
         * Parameters: errorString (string)
@@ -16,4 +16,8 @@ class InvalidScoring extends Exception{
         super(errorString);
     }
 }
-
+class InformationOutOfBoundsException extends ArrayIndexOutOfBoundsException{
+    public InformationOutOfBoundsException(String errorString){
+        super(errorString);
+    }
+}
