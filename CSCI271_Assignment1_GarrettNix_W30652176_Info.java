@@ -29,11 +29,16 @@ class StudentInformation{
             double finalExamScore = Double.parseDouble(values[16].trim()); // final is index 16 in csv
 
             double finalGrade = new CalculateGrade().calculateGrade(assignmentsArray, testsArray, midtermScore, finalExamScore); // cool compact trick I discovered.
+            printInformation(studentName, finalGrade);
         } catch(NumberFormatException e) { // catch throw from parseDouble 
             System.out.println("Error: " + e.getMessage());
         } catch(InvalidScoring e){
             System.out.println("Error: " + e.getMessage());
         }
+    }
+    private static void printInformation(String studentName, double finalGrade){
+        System.out.println(studentName + ":");
+        System.out.println("Final Grade: " + finalGrade);
     }
     // set information of entire csv using cli argument...
     public static void setInformation(String fileIn){

@@ -29,7 +29,7 @@
 ********************************************************************/ 
 import java.util.Scanner;
 
-public class CSCI271_Assignment1_GarrettNix_W30652176_FinalGrade { // class name if public* must match file name to properly compile.... 
+public class CSCI271_Assignment1_GarrettNix_W30652176_Main { // class name if public* must match file name to properly compile.... 
                           // (* I'm not sure just yet public is requirement for this)
   public static void main(String[] args) {
     // try and run path given to calculate csv grades 
