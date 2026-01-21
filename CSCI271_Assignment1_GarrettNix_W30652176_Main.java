@@ -1,14 +1,11 @@
 /*************************************************************************
 * Project 1 for CSCI 271-001 Spring 2026
-*
 * Author: Garrett Nix
 * OS: NixOS 25.11
 * Compiler: javac 25.0.1
 * Date: Jan. 23, 2026
-*
-* Purpose
-* Program calculates the final grade of the class CSCI271.
-*************************************************************************/ 
+* Purpose: Program calculates the final grade of the class CSCI271.
+*************************************************************************/
 
 /*******************************************************************
 * I declare and confirm the following:
@@ -23,19 +20,30 @@
 * comments of my program.
 * - I have not designed this program in such a way as to defeat or
 * interfere with the normal operation of the supplied grading code.
-*
-* <Student's Name>
-* <Student's WID>
-********************************************************************/ 
-import java.util.Scanner;
-
-public class CSCI271_Assignment1_GarrettNix_W30652176_Main { // class name if public* must match file name to properly compile.... 
-                          // (* I'm not sure just yet public is requirement for this)
-  public static void main(String[] args) {
+* Garrett Nix
+* W30652176
+********************************************************************/
+public class CSCI271_Assignment1_GarrettNix_W30652176_Main {
+    /******************************<main>*****************************
+    * Description: Main function that runs all classes and methods to produce
+    * final grade of course
+    *
+    * Parameters: -args: commandline arguments
+    *
+    * Pre: A csv must be presented to the command line for usage
+    *
+    * Post: The final grade will be given and the program will be completed.
+    *
+    * Returns: none
+    *
+    * Called by: none
+    * Calls: setInformation()
+    ************************************************************************/
+    public static void main(String[] args) {
     // try and run path given to calculate csv grades 
     try{    
       String filePath = args[0]; // cli arg for file path of csv
-      StudentInformation studentInfo = new StudentInformation();
+      StudentInformation studentInfo = new StudentInformation(); // construction of student info class.
       studentInfo.setInformation(filePath);
     }
     catch(ArrayIndexOutOfBoundsException e){

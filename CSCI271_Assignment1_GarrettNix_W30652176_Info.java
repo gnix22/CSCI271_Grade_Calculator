@@ -15,7 +15,7 @@ class StudentInformation{
         try{
             double[] assignmentsArray = new double[7];
             double[] testsArray = new double[7];
-            // assuming a1-a7, this are indices 1-7 in array values
+            // assuming a1-a7, these are indices 1-7 in array values
             for(int idx = 0; idx < 7; idx++){
                 // use Double class with method parseDouble() to return converted double by string argument in values.
                 // i+1 since values[0] is name if order is consistent
