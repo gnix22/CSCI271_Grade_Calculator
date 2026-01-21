@@ -24,7 +24,6 @@
 * W30652176
 ********************************************************************/
 class CalculateGrade {
-    // standard avg calculation using arrays
     /******************************<calculateAvg>*****************************
     * Description: Standard calculation of sample mean of random variable.
     *
