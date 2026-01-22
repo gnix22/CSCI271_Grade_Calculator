@@ -41,7 +41,7 @@ class CalculateGrade {
     * Calls: N/A
     ************************************************************************/
     private double calculateAvg(double[] scoreArray){
-        double sum = 0; // sum variable used for 
+        double sum = 0; // sum variable used for avg
         for(double score : scoreArray){
             sum += score; // summation over set
         }

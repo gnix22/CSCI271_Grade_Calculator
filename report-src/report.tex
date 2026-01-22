@@ -25,13 +25,22 @@
 \maketitle
 \vspace{-2em}  % Remove space after title block
 \section{Introduction}
-As a generality, this project has been a useful experience for getting familiarized with the Java programming language. The language itself does not seem entirely complex syntactically, however, there are some points where finding an equivalency between familiar concepts between it and C++ caused many hours scouring the documentation pages of \text{Oracle}, as well as \text{W3Schools}. The main point of learning in this project seemed to be getting used to modularization, and a more Object-Oriented Programming (OOP) approach. This report aims to provide a personal reflection of the project and things that I had learned along the way and potential things that could be done better for the rest of the semester.
-\section{Learned Material}
-As stated, some material and concepts of OOP were already familiar to me as I have taken some courses where these concepts were taught in a brief sense. I have also spent the better part of a year working on a personal TUI project, and have thus reinforced some of the concepts I learned in my own time with this project as well. Syntactically, I learned some interesting ``tricks'' from reading up on the documentation of Java syntax, as well as some open resources online. The main use of these resources were to familiarize myself with the Java syntax and think of how to use them in my own projects, opting to learn concepts rather than be given the answer directly from forums or LLMs that provide a lacking sense of knowledgeable gain from being handed a solution. Some examples of nice points of learning I had during the project was learning about checked and unchecked exceptions when I was struggling to figure out why I was receiving an error with my custom exceptions I was trying to create. I had also learned some interesting tricks with syntax throughout this project that were fun to discover. A couple examples of this are the for each syntax as well as calling a method directly in a construction of a new class object rather than separating the operations on newlines. This was useful as I only needed to use one method for a single object, so it was an interesting way to avoid 2 lines and simply have a single line.
-\section{Some Things I Could Do Better in The Future}
-There were some things early on that I realized may be beneficial to notice early in the course so that way I can more effectively avoid potential pitfalls and time wasting habits when working on the coming projects. One of these of course is the scope of the program. I became very invested in attempting to create some very overly complex functions that are outside of my knowledge base that I wasted an unfortunate amount of time attempting to figure out. For instance, one function would take in the header of a CSV, parse through each column name, and then sort based on the example csv. The intention was to make a robust portion of the program with this, but I soon realized I needed to have not only an implementation of a stack, but an implementation of some type of sorting algorithm that could do this. I soon figured out that this was well beyond what I could think of within the time frame of the assignment, and so I had to reel in my ambitions and come back to it another time. I suppose that's the main aspect that I need to realize for the semester is that I can still have robust programs, but there may need to be times where an exception is the best choice given a restraint, and refactoring can come later.
-\section{Concluding Remarks}
-All in all, I believe this project to be a good introduction into the course as it was well-rounding in its approach. Many things were learned and experienced, good or bad. I hope to use this knowledge gained and begin to create better, more sophisticated code in the coming projects, and throughout the rest of the semester.
-
-
+While calculating a single grade by hand may seem trivial to compute, in scale this often times becomes very tedious and time consuming. Then there is a need for having a method suitable for creating a efficient method for computation. This project aims to amend this issue by providing a potential solution.
+\section{Purpose}
+As stated, this project aims to more effectively scale the grading process for the course CSCI271 by creating a program that does this in an effiecient and robust manner. This allows for many data points to be processed in rapidity, and makes the workload of grading less cumbersome at the end of the semster.
+\section{Implementation}
+Let $A$ be the average score of assignments. Also let $E$ be a combined scoring of all test averages $T$, midterm score $M$, and final exam score $F$ divided by the scaling factor $70\%$. That is 
+\begin{equation*}
+    E=\frac{0.4F+0.2M+0.1T}{70}.
+\end{equation*}
+Using $E$, calculate the final grade $G$ using the piecewise function
+\begin{equation*}
+    G=\begin{cases}
+        E & \quad E<60\\
+        (1-W)E+WA & \quad 60\leq E <80\\
+        0.4F+0.2M+0.1T+0.3A & \quad E\geq 80\end{cases}
+\end{equation*}
+Where $W=0.3(E-60)/20$. Given a CSV file as a command-line argument, the goal is to have the file (that a professor has been updating as the semester has progressed) passed into the program, and effieciently output the name of the student, with their final numeric grade along with it.
+\section{Discussion}
+Most of the pitfalls encountered during this are knowledge-based. In specific, attempting to make the program robust, it was desired to create a function that took a header of column names from the csv and sort the columns to match the example CSV provided. This would involve what is presumed to be some form of linked list, as well as a sorting algorithm. One of these concepts are known, but given the time constraints of the project, this is a pitfall that I would like to amend later in the course once sorting algorithms have been discussed.
 \end{document}
