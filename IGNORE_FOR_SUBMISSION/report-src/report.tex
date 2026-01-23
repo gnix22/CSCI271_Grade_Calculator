@@ -1,0 +1,46 @@
+\documentclass[11pt]{article}
+\usepackage{graphicx} % Use this package to include images
+\usepackage{amsmath} % A library of many standard math expressions
+\usepackage[margin=1in]{geometry}% Sets 1in margins.
+\usepackage{fancyhdr} % Creates headers and footers
+\usepackage{enumerate}  %These two package give custom labels to a list
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsthm} % for theorem style environments for question and answers for readablity
+\usepackage{titlesec}
+% Customize section font size
+\titleformat*{\section}{\fontsize{14pt}{16pt}\bfseries\selectfont}
+% Customize subsection font size
+\titleformat*{\subsection}{\fontsize{12pt}{14pt}\bfseries\selectfont}
+\titlespacing*{\section}{0pt}{1ex}{0.5ex}
+\titlespacing*{\subsection}{0pt}{0.8ex}{0.4ex}
+\newtheorem*{thm}{Theorem}
+\theoremstyle{definition}
+\newtheorem*{q}{Question}
+\newtheorem*{ans}{Answer}
+\title{Project 1 Report}
+\author{Garrett Nix}
+\date{1-23-2026}
+\begin{document}
+\maketitle
+\vspace{-2em}  % Remove space after title block
+\section{Introduction}
+While calculating a single grade by hand may seem trivial to compute, in scale this often times becomes very tedious and time consuming. Then there is a need for having a method suitable for creating a efficient method for computation. This project aims to amend this issue by providing a potential solution.
+\section{Purpose}
+As stated, this project aims to more effectively scale the grading process for the course CSCI271 by creating a program that does this in an effiecient and robust manner. This allows for many data points to be processed in rapidity, and makes the workload of grading less cumbersome at the end of the semster.
+\section{Implementation}
+Let $A$ be the average score of assignments. Also let $E$ be a combined scoring of all test averages $T$, midterm score $M$, and final exam score $F$ divided by the scaling factor $70\%$. That is 
+\begin{equation*}
+    E=\frac{0.4F+0.2M+0.1T}{70}.
+\end{equation*}
+Using $E$, calculate the final grade $G$ using the piecewise function
+\begin{equation*}
+    G=\begin{cases}
+        E & \quad E<60\\
+        (1-W)E+WA & \quad 60\leq E <80\\
+        0.4F+0.2M+0.1T+0.3A & \quad E\geq 80\end{cases}
+\end{equation*}
+Where $W=0.3(E-60)/20$. Given a CSV file as a command-line argument, the goal is to have the file (that a professor has been updating as the semester has progressed) passed into the program, and effieciently output the name of the student, with their final numeric grade along with it.
+\section{Discussion}
+Most of the pitfalls encountered during this are knowledge-based. In specific, attempting to make the program robust, it was desired to create a function that took a header of column names from the csv and sort the columns to match the example CSV provided. This would involve what is presumed to be some form of linked list, as well as a sorting algorithm. One of these concepts are known, but given the time constraints of the project, this is a pitfall that I would like to amend later in the course once sorting algorithms have been discussed.
+\end{document}
